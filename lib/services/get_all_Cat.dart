@@ -1,16 +1,12 @@
 import 'dart:convert';
-import 'package:http/http.dart' ;
+import 'package:http/http.dart';
+import 'package:store_app/helper/api.dart';
 
 class Get_Category {
   Future<List<dynamic>> getCat() async {
-   Response response = await 
-        get(Uri.parse('https://fakestoreapi.com/products/categories'));
-    if (response.statusCode == 200) {
-      List<dynamic> date = jsonDecode(response.body);
-      return date;
-    } else {
-      throw Exception('error${response.statusCode}');
-    }
+    List<dynamic> date =
+        await Api().Get(url: 'https://fakestoreapi.com/products/categories');
+
+     return date;
   }
 }
- 
